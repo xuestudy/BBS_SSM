@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd 
+	http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+	http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd">
+	
+	<!--加载redis.properties  -->
+	<!-- <context:property-placeholder location="classpath:conf/redis.properties"/> -->
+	<!-- 扫描类进来 -->
+	<!-- <context:component-scan base-package="com.xue.bbs.common" /> -->
+	
+	<!-- 向Spring容器中添加JedisClientPool操作jedis类 -->
+	<bean id="jedisClientPool" class="com.xue.bbs.common.JedisClientPool">
+		<property name="jedisPool" ref="jedisPool"></property>
+	</bean>
+	
+	<!-- 向Spring容器中添加JedisPool对象 -->
+	<bean id="jedisPool" class="redis.clients.jedis.JedisPool">
+		<constructor-arg name="poolConfig" ref="jedisPoolConfig"></constructor-arg>
+		<constructor-arg name="host" value="${redis.ip}"></constructor-arg>
+		<constructor-arg name="port" value="${redis.port}"></constructor-arg>
+		<constructor-arg name="timeout" value="${redis.timeout}"></constructor-arg>
+		<constructor-arg name="password" value="${redis.password}"></constructor-arg>
+	</bean>
+	
+	<!-- 向Spring容器中添加资源管理 JedisPool池 -->
+	<bean id="jedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig">
+		<property name="maxTotal" value="${redis.pool.maxTotal}"/>
+		<property name="maxIdle" value="${redis.pool.maxIdle}" />
+		<property name="minIdle" value="${redis.pool.minIdle}"/>
+		<property name="maxWaitMillis" value="${redis.pool.maxWaitMillis}"/>
+		<property name="testOnBorrow" value="${redis.pool.testOnBorrow}" />
+		<property name="testOnReturn" value="${redis.pool.testOnReturn}" />
+		<property name="testWhileIdle" value="${redis.pool.testWhileIdle}" />
+		<property name="numTestsPerEvictionRun" value="${redis.pool.numTestsPerEvictionRun}" />
+		<property name="timeBetweenEvictionRunsMillis" value="${redis.pool.timeBetweenEvictionRunsMillis}" />
+	</bean>
+
+</beans>
