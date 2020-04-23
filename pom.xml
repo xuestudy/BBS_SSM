@@ -33,7 +33,7 @@
 		<!-- 引入commons -->
 		<commons.version>2.6</commons.version>
 		<!-- 引入jackson -->
-		<jackson.version>2.9.0</jackson.version>
+		<jackson.version>2.9.10.4</jackson.version>
 	</properties>
 
 	<!-- 版本锁定，声明依赖 dependencyManagement 加入依赖 dependency -->
