@@ -25,7 +25,7 @@
 		<!-- 日记记录版本号 -->
 		<slf4j.version>1.6.4</slf4j.version>
 		<!-- 单元测试的版本号 -->
-		<junit.version>4.12</junit.version>
+		<junit.version>4.13.1</junit.version>
 		<!-- 分页插件的版本号 -->
 		<pagehelper.version>4.1.4</pagehelper.version>
 		<!-- Jedis的版本号 -->
