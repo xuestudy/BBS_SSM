@@ -12,7 +12,7 @@
 		<!-- spring的版本号，已经包含springmvc -->
 		<spring.version>4.2.4.RELEASE</spring.version>
 		<!-- mybatis的版本号 -->
-		<mybatis.version>3.2.8</mybatis.version>
+		<mybatis.version>3.5.6</mybatis.version>
 		<!-- mybatis整合spring的版本号 -->
 		<mybatis.spring.version>1.2.2</mybatis.spring.version>
 		<!-- mysql连接的版本号 -->
